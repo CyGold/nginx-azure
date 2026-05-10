@@ -1,0 +1,9 @@
+venv
+variables.tf
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+.env
+*.tfvars
+.terraform.lock.hcl
+weatherapp/__pycache__
