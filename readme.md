@@ -203,7 +203,8 @@ Execution Time: 0.489 ms
 | Execution time | 150.444ms | 21.731ms | **86% faster** |
 | Scan type | Sequential (50k rows) | Bitmap Index (108 rows) | — |
 
-
+![Query before image](images/beforepsql.png)
+![Query after image](images/afterpsql.png)
 
 #### Query Planner Behaviour — An Important Note
 
@@ -284,6 +285,7 @@ sudo nginx -t && sudo systemctl restart nginx
 ```bash
 sudo ~/deploy.sh
 ```
+![deploy script output](images/deploysh.png)
 
 ### 5. Deallocate VMs when not in use
 ```bash
@@ -311,8 +313,8 @@ az vm deallocate --resource-group nginx-project-rg --name app-vm-2
 │   ├── vms.tf           # VM definitions and NICs
 │   ├── variables.tf     # Input variables
 │   ├── outputs.tf       # IP address outputs
-│   └── terraform.tfvars # Your values (gitignored)
-├── app/
+│   
+├── weatherapp/
 │   └── main.py          # FastAPI application
 ├── nginx/
 │   └── weatherapp       # Nginx site config
@@ -321,9 +323,12 @@ az vm deallocate --resource-group nginx-project-rg --name app-vm-2
 ├── db/
 │   ├── schema.sql       # Database schema
 │   └── seed_data.py     # Data seeding script
-└── README.md
+└── readme.md
 ```
 
 ---
 
-*Infrastructure destroyed on Azure using terraform destroy. All VMs deallocated when not in use to minimise cost (~$0.06/hour when running).*
+*All VMs deallocated when not in use to minimise cost (~$0.06/hour when running).Infrastructure destroyed on Azure using*
+```bash 
+terraform destroy
+```
